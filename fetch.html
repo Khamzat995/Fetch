@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fetch</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            width: 500px;
+            margin: 10px auto;
+            background: #ADD8E6;
+        }
+
+        .list {
+            margin: 0 auto;
+            box-shadow: 0 0 1em black;
+            width: auto;
+            height: 100%;
+            position: relative;
+            padding: 40px;
+            border-radius: 6px;
+            background:#FFE4B5;
+        }
+    </style>
+</head>
+<body>
+    <div class="list" id="list"></div>
+
+    <script>
+        const a = document.createElement('a');
+        const b = document.getElementById('list');
+
+        b.prepend(a);
+
+        let response =  fetch('https://api.chucknorris.io/jokes/random');
+
+        response.then((res) => {
+          const text = res.json()
+
+          text.then((txt) => {
+            let texxt = txt.value
+
+            a.prepend(texxt)
+
+          })
+
+
+        })
+    </script>
+</body>
+</html>
